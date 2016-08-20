@@ -10,7 +10,7 @@ Source0:  https://github.com/savonet/ocaml-fdkaac/releases/download/%{version}/o
 BuildRequires: ocaml
 BuildRequires: ocaml-findlib
 BuildRequires: fdk-aac-devel
-Requires:      fdkaac
+Requires:      fdk-aac
 
 %description
 OCAML bindings for fdkaac
@@ -18,7 +18,7 @@ OCAML bindings for fdkaac
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
-Requires:       openssl-devel
+Requires:       fdk-aac-devel
 
 
 %description    devel
