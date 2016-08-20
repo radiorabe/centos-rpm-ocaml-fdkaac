@@ -18,6 +18,7 @@ OCAML bindings for fdkaac
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}-debuginfo
 Requires:       fdk-aac-devel
 
 
