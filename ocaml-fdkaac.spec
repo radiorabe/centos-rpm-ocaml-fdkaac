@@ -30,8 +30,7 @@ developing applications that use %{name}.
 
 %build
 ./configure \
-   --prefix=%{_prefix} \
-   -disable-ldconf
+   --prefix=%{_prefix}
 make all
 
 %install
