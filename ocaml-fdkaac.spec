@@ -11,6 +11,7 @@ BuildRequires: ocaml
 BuildRequires: ocaml-findlib
 BuildRequires: fdk-aac-devel
 Requires:      fdk-aac
+Provides:      ocaml(Fdkaac_dynlink)
 
 %description
 OCAML bindings for fdkaac
@@ -18,7 +19,6 @@ OCAML bindings for fdkaac
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
-Requires:       %{name}-debuginfo
 Requires:       fdk-aac-devel
 
 
