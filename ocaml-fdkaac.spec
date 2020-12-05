@@ -1,14 +1,15 @@
 Name:     ocaml-fdkaac
 
-Version:  0.2.1
-Release:  1
+Version:  0.3.2
+Release:  0.1%{?dist}
 Summary:  OCaml bindings for fdkaac
 License:  GPLv2+
 URL:      https://github.com/savonet/ocaml-fdkaac
-Source0:  https://github.com/savonet/ocaml-fdkaac/releases/download/%{version}/ocaml-fdkaac-%{version}.tar.gz
+Source0:  https://github.com/savonet/ocaml-fdkaac/archive/%{version}.tar.gz?#/%{name}-%{version}.tar.gz
 
 BuildRequires: ocaml
 BuildRequires: ocaml-findlib
+BuildRequires: ocaml-dune-devel
 BuildRequires: fdk-aac-devel
 Requires:      fdk-aac
 Provides:      ocaml(Fdkaac_dynlink)
@@ -30,20 +31,18 @@ developing applications that use %{name}.
 %setup -q 
 
 %build
-./configure \
-   --prefix=%{_prefix}
-make all
+dune build
 
 %install
-export DESTDIR=%{buildroot}
-export OCAMLFIND_DESTDIR=%{buildroot}$(ocamlfind printconf destdir)
-export DLLDIR=$OCAMLFIND_DESTDIR/stublibs
+dune install \
+  --prefix %{buildroot} \
+  --libdir %{buildroot}$(ocamlfind printconf destdir)
+rm -rf %{buildroot}/doc
 
-install -d $OCAMLFIND_DESTDIR/stublibs
-make install
 
 %files
-%doc CHANGES COPYING README
+%doc README.md CHANGES
+%license COPYING
 %{_libdir}/ocaml/*
 %exclude %{_libdir}/ocaml/*/*.a
 %exclude %{_libdir}/ocaml/*/*.cmxa
